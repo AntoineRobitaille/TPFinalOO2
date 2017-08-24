@@ -24,7 +24,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getInfo()
         loadData()
     }
-    //-------------------------
+    
+    //---Met les donées JSON dans le viewContent
     func loadData() {
         viewContent = []
         for a in Singleton.instancePartage.unArray{
@@ -34,11 +35,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             viewContent2.append(b)
         }
     }
+    
     //-------------------------
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //---Methode pour remplace les caractères pour le php
+    func replaceChars(originalStr: String, what: String, byWhat: String) -> String {
+        return originalStr.replacingOccurrences(of: what, with: byWhat)
+    }
+    
+    //---Methode faire le segue avec les éléments sélectionnées
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "liste" {
+            let secondVC = segue.destination as! SecondViewController
+            secondVC.values2 = valuesToSend
+        }
+    }
+    
+    //---Methode pour aller chercher l'infonrmation dans le data.json
     func getInfo() {
         
         let urlString = "http://localhost/dashboard/robitaille/check_list_php/data.json"
@@ -125,11 +141,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    //---Methode pour remplace les caractères pour le php
-    func replaceChars(originalStr: String, what: String, byWhat: String) -> String {
-        return originalStr.replacingOccurrences(of: what, with: byWhat)
-    }
-    
     //---Bouton réinitialiser
     //déselectionner toutes les taches sélectionnés
     @IBAction func Reinitialiser(_ sender: UIButton) {
@@ -151,21 +162,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //Prend les elements sélectionné et les envoies dans la liste
     @IBAction func VoirListe(_ sender: UIButton) {
         valuesToSend.removeAll()
-        let selected_indexPaths = tableV.indexPathsForSelectedRows
-        for indexPath in selected_indexPaths! {
+        if let selected_indexPaths = tableV.indexPathsForSelectedRows {
+        for indexPath in selected_indexPaths {
             let cell = tableV.cellForRow(at: indexPath)
             valuesToSend.append((cell?.textLabel?.text)!)
+            }
         }
         print(valuesToSend)
         
-    }
-    
-    //---Methode faire le segue avec les éléments sélectionnées
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "liste" {
-            let secondVC = segue.destination as! SecondViewController
-            secondVC.values2 = valuesToSend
-        }
     }
     
     //----Methodes pour table view-----------------
