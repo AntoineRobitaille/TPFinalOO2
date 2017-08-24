@@ -210,7 +210,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-    
+    //---------------------
+    //---Permet aux cellules "true" d'être sélectionné 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if Singleton.instancePartage.unArray2[indexPath.row] == true {
             cell.setSelected(true, animated: false)
