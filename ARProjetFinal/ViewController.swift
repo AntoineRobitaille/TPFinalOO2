@@ -96,12 +96,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.present(alerte,animated: true, completion: nil)
         }
         else{
+            let alerte2 = UIAlertController(title: "Information", message:"N'oubliez pas de sauvegarder pour ne pas perdre vos données", preferredStyle: UIAlertControllerStyle.alert)
+            alerte2.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(alerte2,animated: true, completion: nil)
+            
             self.view.endEditing(true)
             Singleton.instancePartage.unArray.append(newElement.text!)
             Singleton.instancePartage.unArray2.append(false)
             loadData()
             tableV.reloadData()
+            
         }
+
         newElement.text = ""
     }
     //---Bouton Sauvegarder
@@ -201,8 +208,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         else {
             Singleton.instancePartage.unArray2[indexPath.row] = false
         }
+        
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if Singleton.instancePartage.unArray2[indexPath.row] == true {
+            cell.setSelected(true, animated: false)
+            cell.contentView.backgroundColor = UIColor.darkGray
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
+        }
+    }
     
     //---------------------
     //----Éliminer les cellules

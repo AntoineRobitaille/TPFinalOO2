@@ -9,6 +9,3 @@ class Singleton{
 }
 //=========================
 
-class ListeDesTaches{
-    
-}
