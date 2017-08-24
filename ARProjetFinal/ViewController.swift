@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---Methode pour aller chercher l'infonrmation dans le data.json
     func getInfo() {
         
-        let urlString = "http://localhost/dashboard/robitaille/check_list_php/data.json"
+        let urlString = "http://localhost/dashboard/geneau/poo2/data.json"
         
         do {
             if let url = URL(string: urlString) {
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             dictionary[Singleton.instancePartage.unArray[a]] = Singleton.instancePartage.unArray2[a]
         }
         
-        var urlToSend = "http://localhost/dashboard/robitaille/check_list_php/add.php?json=["
+        var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
         var counter = 0
         let total = dictionary.count
         for (a, b) in dictionary {
