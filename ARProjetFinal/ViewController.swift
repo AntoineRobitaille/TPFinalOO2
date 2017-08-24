@@ -11,7 +11,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var viewContent2: [Bool] = []
     var aDict: [String: Bool] = [:]
     var defaults = UserDefaults.standard
-    
+    var valuesToSend : [String] = []
+
     
     //-------------------------
     override func viewDidLoad() {
@@ -123,7 +124,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dataTask.resume()
         
     }
-    //---
+    
+    //---Methode pour remplace les caractères pour le php
     func replaceChars(originalStr: String, what: String, byWhat: String) -> String {
         return originalStr.replacingOccurrences(of: what, with: byWhat)
     }
@@ -145,21 +147,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableV.reloadData()
     }
     
-    
-    
     //---Bouton Voir Liste
     //Prend les elements sélectionné et les envoies dans la liste
     @IBAction func VoirListe(_ sender: UIButton) {
-       // var values : [String] = []
-       // let selected_indexPaths = tableView.indexPathsForSelectedRows
-        //for indexPath in selected_indexPaths! {
-          //  let cell = tableView.cellForRow(at: indexPath)
-            //values.append((cell?.textLabel?.text)!)
-        //}
+        valuesToSend.removeAll()
+        let selected_indexPaths = tableV.indexPathsForSelectedRows
+        for indexPath in selected_indexPaths! {
+            let cell = tableV.cellForRow(at: indexPath)
+            valuesToSend.append((cell?.textLabel?.text)!)
+        }
+        print(valuesToSend)
         
-       // print("!!!!!!!!!!! : \(selectedCells)")
     }
     
+    //---Methode faire le segue avec les éléments sélectionnées
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "liste" {
+            let secondVC = segue.destination as! SecondViewController
+            secondVC.values2 = valuesToSend
+        }
+    }
     
     //----Methodes pour table view-----------------
     //----Nombre de cellules
@@ -167,6 +174,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.backgroundColor = UIColor.clear
         return viewContent.count
     }
+    
     //---------------------
     //----Texte dans les cellules
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -176,6 +184,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.backgroundColor = UIColor.clear
         return cell
     }
+    
     //---------------------
     //----Selection des cellules
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -184,11 +193,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if Singleton.instancePartage.unArray2[indexPath.row] == false {
           Singleton.instancePartage.unArray2[indexPath.row] = true
+         
+        
         }
         else {
             Singleton.instancePartage.unArray2[indexPath.row] = false
         }
     }
+    
+    //---------------------
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if Singleton.instancePartage.unArray2[indexPath.row] == true {
+            cell.contentView.backgroundColor = UIColor.darkGray
+        }
+    }
+    
     //---------------------
     //----Éliminer les cellules
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

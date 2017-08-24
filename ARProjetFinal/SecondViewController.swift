@@ -3,6 +3,8 @@ import UIKit
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    var values2 : [String] = []
+    
     //-------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +20,12 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //---------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
-        return 20
+        return values2.count
     }
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-        cell.textLabel!.text = "Hello World"
+        cell.textLabel!.text = values2[indexPath.row]
         cell.textLabel?.textColor = UIColor.white
         cell.backgroundColor = UIColor.clear
         return cell
@@ -36,6 +38,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
+            values2.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }

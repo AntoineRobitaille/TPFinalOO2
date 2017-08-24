@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,7 +71,7 @@
                                 <state key="normal" image="voirListe.png"/>
                                 <connections>
                                     <action selector="VoirListe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jju-4L-03v"/>
-                                    <segue destination="LWr-JC-Wxs" kind="presentation" id="6Lp-a5-Hjr"/>
+                                    <segue destination="LWr-JC-Wxs" kind="presentation" identifier="liste" id="6Lp-a5-Hjr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3e-wJ-5za">
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
         </scene>
-        <!--Second View Controller-->
+        <!--SecondViewController-->
         <scene sceneID="Jx9-N8-hhW">
             <objects>
-                <viewController id="LWr-JC-Wxs" customClass="SecondViewController" customModule="ARProjetFinal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" title="SecondViewController" id="LWr-JC-Wxs" customClass="SecondViewController" customModule="ARProjetFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ovr-tc-Xvv"/>
                         <viewControllerLayoutGuide type="bottom" id="kFI-YG-wPO"/>
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNl-iv-Dj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="36"/>
+            <point key="canvasLocation" x="908" y="36"/>
         </scene>
     </scenes>
     <resources>
