@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return originalStr.replacingOccurrences(of: what, with: byWhat)
     }
     
-    //---Methode faire le segue avec les éléments sélectionnées
+    //---Methode pour faire le segue avec les éléments sélectionnées
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "liste" {
             let secondVC = segue.destination as! SecondViewController
@@ -211,7 +211,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     //---------------------
-    //---Permet aux cellules "true" d'être sélectionné 
+    //---Permet aux cellules "true" d'être sélectionné
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if Singleton.instancePartage.unArray2[indexPath.row] == true {
             cell.setSelected(true, animated: false)

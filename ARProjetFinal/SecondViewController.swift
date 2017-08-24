@@ -5,6 +5,10 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var values2 : [String] = []
     
+    
+    
+    @IBOutlet weak var SecondTableV: UITableView!
+    
     //-------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,8 +19,8 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     //-------------------------
     
-    @IBOutlet weak var SecondTableV: UITableView!
     
+    //---Methodes pour le table view
     //---------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
