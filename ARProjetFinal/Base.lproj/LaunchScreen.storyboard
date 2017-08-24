@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +21,40 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="b4s-Vd-53z">
+                                <rect key="frame" x="113" y="181" width="148" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="RVI-XR-Dlv"/>
+                                    <constraint firstAttribute="width" constant="148" id="Wgr-jJ-SqL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wi-v1-8j2">
+                                <rect key="frame" x="78" y="304" width="218" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218" id="8PC-Lw-xYj"/>
+                                    <constraint firstAttribute="height" constant="62" id="NMZ-jz-Ed8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="46"/>
+                                <color key="textColor" red="0.23921568630000001" green="0.53333333329999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.36078431370000003" green="0.76078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0Wi-v1-8j2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="62" id="Us1-q5-LK5"/>
+                            <constraint firstItem="0Wi-v1-8j2" firstAttribute="top" secondItem="b4s-Vd-53z" secondAttribute="bottom" constant="8" id="gyf-gr-9NS"/>
+                            <constraint firstItem="b4s-Vd-53z" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="161" id="nXo-JK-3Kd"/>
+                            <constraint firstItem="b4s-Vd-53z" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="97" id="pCp-LX-IIv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="28" y="395.35232383808096"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo.png" width="220" height="170"/>
+    </resources>
 </document>

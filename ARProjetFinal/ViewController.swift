@@ -193,21 +193,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if Singleton.instancePartage.unArray2[indexPath.row] == false {
           Singleton.instancePartage.unArray2[indexPath.row] = true
-         
-        
         }
         else {
             Singleton.instancePartage.unArray2[indexPath.row] = false
         }
     }
     
-    //---------------------
-     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if Singleton.instancePartage.unArray2[indexPath.row] == true {
-            cell.contentView.backgroundColor = UIColor.darkGray
-        }
-    }
     
     //---------------------
     //----Éliminer les cellules
